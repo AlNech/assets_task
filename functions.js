@@ -182,7 +182,7 @@ function saveAsset(e) {
     
     const formData = new FormData(assetForm);
     const assetType = formData.get('assetType');
-    
+
     const assetData = {
         id: currentAssetId,
         name: formData.get('assetName'),
@@ -210,6 +210,8 @@ function saveAsset(e) {
             asset.id === currentAssetId ? assetData : asset
         );
     } else {
+        assetData.id = assets.length + 1;
+        currentAssetId = assets.length + 1;
         assets.unshift(assetData);
     }
 
