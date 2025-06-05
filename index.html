@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор активов предприятия</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+     <!-- Блок для списка активов -->
+    <div class="container">
+        <h1>Активы предприятия</h1>
+        <button id="addAsset" class="btn btn-primary">Добавить актив</button>
+        <div class="assets-list" id="assetsList">
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="assetModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Редактирование актива</h2>
+            <form id="assetForm">
+                <div class="form-group">
+                    <label for="assetType">Тип актива:</label>
+                    <select id="assetType" name="assetType" required>
+                        <option value="money">Денежные средства</option>
+                        <option value="nonMoney">Неденежные активы</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="assetName">Название актива:</label>
+                    <input type="text" id="assetName" name="assetName" required>
+                </div>
+
+                <!-- Поля для денежных активов -->
+                <div id="moneyFields">
+                    <div class="form-group">
+                        <label for="amount">Сумма:</label>
+                        <input type="number" id="amount" name="amount" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Валюта/Номинал:</label>
+                        <input type="text" id="currency" name="currency" placeholder="рубли, доллары, талоны на бензин">
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName">Название банка (оставьте пустым для кассы):</label>
+                        <input type="text" id="bankName" name="bankName">
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Номер счета:</label>
+                        <input type="text" id="accountNumber" name="accountNumber">
+                    </div>
+                </div>
+
+                <!-- Поля для неденежных активов -->
+                <div id="nonMoneyFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="initialCost">Начальная стоимость:</label>
+                        <input type="number" id="initialCost" name="initialCost" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="residualCost">Остаточная стоимость:</label>
+                        <input type="number" id="residualCost" name="residualCost" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="estimatedCost">Оценочная стоимость:</label>
+                        <input type="number" id="estimatedCost" name="estimatedCost" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="inventoryNumber">Инвентарный номер:</label>
+                        <input type="text" id="inventoryNumber" name="inventoryNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="productionDate">Дата производства/постройки:</label>
+                        <input type="date" id="productionDate" name="productionDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Количество:</label>
+                        <input type="number" id="quantity" name="quantity" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Единица измерения:</label>
+                        <input type="text" id="unit" name="unit" placeholder="кг, шт, м² и т.д.">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес/Местоположение (для недвижимости):</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="functions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
